@@ -1,3 +1,4 @@
+//Mayra Zamudio (partner)
 #include <gtest/gtest.h>
 #include <iostream>
 #include <sstream>
@@ -220,6 +221,18 @@ TEST(SnowTest,GoodTest1) {
 	//cout << bob.get_elevation(p) << endl;
 	EXPECT_EQ(bob.get_elevation(p),87);
 	EXPECT_EQ(bob.get_elevation({3,4}),99); //Shortcut
+	
+	
+	Snow James(10); //5 is a random seed
+	EXPECT_EQ(James.get_elevation({0,9}),7); //Shortcut
+	
+	Snow Mayra(8); //5 is a random seed
+	EXPECT_EQ(Mayra.get_elevation({9,9}),4); //Shortcut
+	
+	Snow Tomas(8); //5 is a random seed
+	EXPECT_EQ(Tomas.get_elevation({9,0}),1); //Shortcut
+	Snow Scotty(8); //5 is a random seed
+	EXPECT_EQ(Scotty.get_elevation({3,4}),1); //Shortcut
 }
 
 //YOU: Write five more test cases where the Snow class should fail
@@ -230,6 +243,96 @@ TEST(SnowTest,BadTest1) {
 		Position p = cindy.fall_line({-1,-1}); //Should throw
 		//But if not, this should throw:
 		cout << cindy.get_elevation(p);
+		FAIL() << "We shouldn't have gotten here - test should have thrown an exception in either fall_line or get_elevation!";
+	}
+	catch (const out_of_range &e) {
+		//Testing strings is a bit weird - use one of these two options
+		EXPECT_EQ(e.what(),string("Bad Position"));
+//	EXPECT_STREQ(e.what(),"No way out!"); //FIXME: Figure out why this is failing 
+	}
+	catch (...) {
+		FAIL() << "We threw an exception that we didn't catch";
+	}
+}
+TEST(SnowTest,BadTest2) {
+	Snow cindy(12);
+	//Here's how you write a test for an exception
+	try {
+		Position p = cindy.fall_line({3,11}); //Should throw
+		//But if not, this should throw:
+		cout << cindy.get_elevation(p);
+		FAIL() << "We shouldn't have gotten here - test should have thrown an exception in either fall_line or get_elevation!";
+	}
+	catch (const out_of_range &e) {
+		//Testing strings is a bit weird - use one of these two options
+		EXPECT_EQ(e.what(),string("Bad Position"));
+//	EXPECT_STREQ(e.what(),"No way out!"); //FIXME: Figure out why this is failing 
+	}
+	catch (...) {
+		FAIL() << "We threw an exception that we didn't catch";
+	}
+}
+TEST(SnowTest,BadTest3) {
+	Snow cindy(12);
+	//Here's how you write a test for an exception
+	try {
+		Position p = cindy.fall_line({0,10}); //Should throw
+		//But if not, this should throw:
+		cout << cindy.get_elevation(p);
+		FAIL() << "We shouldn't have gotten here - test should have thrown an exception in either fall_line or get_elevation!";
+	}
+	catch (const out_of_range &e) {
+		//Testing strings is a bit weird - use one of these two options
+		EXPECT_EQ(e.what(),string("Bad Position"));
+//	EXPECT_STREQ(e.what(),"No way out!"); //FIXME: Figure out why this is failing 
+	}
+	catch (...) {
+		FAIL() << "We threw an exception that we didn't catch";
+	}
+}
+TEST(SnowTest,BadTest4) {
+	Snow Jimmothy(15);
+	//Here's how you write a test for an exception
+	try {
+		Position p = Jimmothy.fall_line({10,8}); //Should throw
+		//But if not, this should throw:
+		cout << Jimmothy.get_elevation(p);
+		FAIL() << "We shouldn't have gotten here - test should have thrown an exception in either fall_line or get_elevation!";
+	}
+	catch (const out_of_range &e) {
+		//Testing strings is a bit weird - use one of these two options
+		EXPECT_EQ(e.what(),string("Bad Position"));
+//	EXPECT_STREQ(e.what(),"No way out!"); //FIXME: Figure out why this is failing 
+	}
+	catch (...) {
+		FAIL() << "We threw an exception that we didn't catch";
+	}
+}
+TEST(SnowTest,BadTest5) {
+	Snow Bobothy(15);
+	//Here's how you write a test for an exception
+	try {
+		Position p = Bobothy.fall_line({3,'.'}); //Should throw
+		//But if not, this should throw:
+		cout << Bobothy.get_elevation(p);
+		FAIL() << "We shouldn't have gotten here - test should have thrown an exception in either fall_line or get_elevation!";
+	}
+	catch (const out_of_range &e) {
+		//Testing strings is a bit weird - use one of these two options
+		EXPECT_EQ(e.what(),string("Bad Position"));
+//	EXPECT_STREQ(e.what(),"No way out!"); //FIXME: Figure out why this is failing 
+	}
+	catch (...) {
+		FAIL() << "We threw an exception that we didn't catch";
+	}
+}
+TEST(SnowTest,BadTest6) {
+	Snow Felicia(15);
+	//Here's how you write a test for an exception
+	try {
+		Position p = Felicia.fall_line({'A',3}); //Should throw
+		//But if not, this should throw:
+		cout << Felicia.get_elevation(p);
 		FAIL() << "We shouldn't have gotten here - test should have thrown an exception in either fall_line or get_elevation!";
 	}
 	catch (const out_of_range &e) {
